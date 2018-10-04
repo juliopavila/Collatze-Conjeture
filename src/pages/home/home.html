@@ -1,14 +1,34 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Collatz Conjeture
     </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="reset()">
+          <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label>Number:</ion-label>
+    <ion-input type="number" [(ngModel)]="sequence" placeholder="Integer number like 2"></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button block (click)="checkSequence(sequence)">Submit</button>
+  <br>
+  <ion-item> 
+    <ion-grid>
+      <ion-row text-center *ngFor="let result of sequenceList; let i = index">
+        <ion-col col-3>
+          Sequence {{ i+1 }} :
+        </ion-col>
+        <ion-col col-9>
+          {{ result }}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
 </ion-content>
